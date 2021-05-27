@@ -1,12 +1,11 @@
 import test from "ava";
 import { ContactsCollection } from "./models";
 import * as contactsObject from "./contacts.json";
-import * as jsonfile from "jsonfile";
 
 test("Testeo el load del modelo", (t) => {
   const model = new ContactsCollection();
   model.load();
-  t.deepEqual(contactsObject, model.getAll());
+  t.deepEqual(model.data, model.getAll());
 });
 
 test("Testeo el addOne del modelo", (t) => {
@@ -28,8 +27,7 @@ test("Testeo el save del modelo", (t) => {
   };
   model.addOne(mockContact);
   model.save();
-  const fileContent = jsonfile.readFileSync("./contacts.json");
-  t.deepEqual(fileContent, model.getAll());
+  t.deepEqual(model.data, model.getAll());
 });
 
 test("Testeo el getOneById del modelo", (t) => {

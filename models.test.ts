@@ -1,6 +1,5 @@
 import test from "ava";
 import { ContactsCollection } from "./models";
-import * as contactsObject from "./contacts.json";
 
 test("Testeo el load del modelo", (t) => {
   const model = new ContactsCollection();
